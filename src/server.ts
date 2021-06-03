@@ -1,11 +1,12 @@
 require("dotenv").config();
-import * as express from "express";
-import * as logger from "morgan";
+import express from "express";
+import logger from "morgan";
 import { ApolloServer } from "apollo-server-express";
 import { graphqlUploadExpress } from "graphql-upload";
 import { typeDefs, resolvers } from "./schema";
 import client from "./client";
 import { getUser, protectedResolvers } from "./users/users.utils";
+import { String } from "aws-sdk/clients/cloudhsm";
 
 const PORT = process.env.PORT;
 
@@ -16,7 +17,7 @@ const server = new ApolloServer({
   context: async ({ req }) => {
     return {
       client,
-      loggedInUser: await getUser(req.headers.token),
+      loggedInUser: await getUser(req.headers.token as string),
       protectedResolvers,
     };
   },
