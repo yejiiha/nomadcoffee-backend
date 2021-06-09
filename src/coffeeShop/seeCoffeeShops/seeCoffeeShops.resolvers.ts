@@ -6,7 +6,7 @@ const resolvers: Resolvers = {
       client.coffeeShop.findMany({
         take: 5,
         skip: offset,
-        include: { photos: true },
+        include: { photos: true, user: true, categories: true },
       }),
   },
 };
