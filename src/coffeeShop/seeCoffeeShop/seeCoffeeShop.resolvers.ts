@@ -5,7 +5,7 @@ const resolvers: Resolvers = {
     seeCoffeeShop: (_, { id }, { client }) =>
       client.coffeeShop.findFirst({
         where: { id },
-        include: { categories: true, photos: true },
+        include: { categories: true, photos: true, user: true },
       }),
   },
 };
