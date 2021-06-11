@@ -24,16 +24,6 @@ const resolvers: Resolvers = {
             throw new Error("This coffeeShop is not found.");
           }
 
-          if (name) {
-            const existName = await client.coffeeShop.findUnique({
-              where: { name },
-              select: { id: true },
-            });
-            if (existName) {
-              throw new Error("This coffeeShop name is taken.");
-            }
-          }
-
           let categoryObj = [];
           let photoUrl = "";
 
