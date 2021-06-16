@@ -7,22 +7,6 @@ const resolvers: Resolvers = {
         take: 5,
         skip: offset,
         include: { photos: true, user: true, categories: true },
-        where: {
-          OR: [
-            {
-              user: {
-                followers: {
-                  some: {
-                    id: loggedInUser.id,
-                  },
-                },
-              },
-            },
-            {
-              userId: loggedInUser.id,
-            },
-          ],
-        },
         orderBy: {
           id: "desc",
         },
